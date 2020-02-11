@@ -1,5 +1,4 @@
-
-.ipynb_checkpoints/README-checkpoint.md
+.ipynb_checkpoints/*
 data/processed/mlo_co2.csv
 data/processed/ucsd_co2.csv
 scripts/.ipynb_checkpoints/preprocess-checkpoint.py
