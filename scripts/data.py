@@ -11,7 +11,7 @@ def mlo():
         print("Run scripts.preprocess.process_all_data() first.")
 
 
-def uc_san_diego():
+def ucsd():
     try:
         with open('data/processed/ucsd_co2.csv') as ucsd:
             return pd.read_csv(ucsd)
