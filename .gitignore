@@ -2,3 +2,6 @@
 data/processed/mlo_co2.csv
 data/processed/ucsd_co2.csv
 scripts/.ipynb_checkpoints/preprocess-checkpoint.py
+
+poetry.lock
+pyproject.toml
