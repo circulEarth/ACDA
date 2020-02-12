@@ -4,26 +4,28 @@
 # TODO add credit to ESRL
 
 import csv
+from datetime import date
+
 import data
 import pandas
 
 def process_all_data():
     process_mlo_data()
     process_uc_san_diego_data()
-    # process_global_data()
+    process_global_data()
 
 
 def process_mlo_data():
 
     """
-    Process data collected by the Earth Science Research Laboratory
+    Process CO2 data collected by the Earth Science Research Laboratory
         https://www.esrl.noaa.gov/gmd/ccgg/trends/data.html
     Data collected from the Mauna Loa Observatory in Mauna Loa, Hawaii
 
     Takes data in co2_weekly_mlo.txt and converts it into a CSV
     """
 
-    with open('data/processed/mlo_co2.csv', 'w') as mlo_csv_file:
+    with open('data/processed/mlo_co2.csv', 'w+') as mlo_csv_file:
         csvwriter = csv.writer(mlo_csv_file)
 
         csvwriter.writerow(['Year', 'Month', 'Day', 'Decimal Date', 'Carbon Dioxide (ppm)'])
@@ -44,16 +46,16 @@ def process_mlo_data():
 
 
 def process_uc_san_diego_data():
-
     """
-    Process data collected by the Earth Science Research Laboratory
+    Process CO2 data collected by the Earth Science Research Laboratory
         https://www.esrl.noaa.gov/gmd/ccgg/trends/data.html
     Data collected from the Mauna Loa Observatory in Mauna Loa, Hawaii
+    Preprocessed by the University of California San Diego
 
     Takes data in co2_weekly_mlo.txt and converts it into a CSV
     """
 
-    with open('data/processed/ucsd_co2.csv', 'w') as ucsd_csv_file:
+    with open('data/processed/ucsd_co2.csv', 'w+') as ucsd_csv_file:
         csvwriter = csv.writer(ucsd_csv_file)
 
         # Load unprocessed ucsd data
@@ -66,20 +68,30 @@ def process_uc_san_diego_data():
         ucsd.to_csv(ucsd_csv_file, sep=',', index=False)
 
 
-def fetch_current_mlo():
-
+def process_global_data():
     """
-    Pull the most recent version of MLO data and 
-     save it to XXX
+    Process CO2 data collected by the Earth Science Research Laboratory
+        https://www.esrl.noaa.gov/gmd/ccgg/trends/data.html
+    Data collected from global sources and averaged out.
+
+    Takes data in co2_trend_gl.txt and converts it into a CSV
     """
+    with open('data/processed/co2_global.csv', 'w+') as global_csv_file:
+        csvwriter = csv.writer(global_csv_file)
 
-    pass
+        csvwriter.writerow(['Date', 'Carbon Dioxide (ppm)'])
 
-def fetch_current_global():
+        # Load unprocessed global co2 data
+        with open('data/raw/co2_trend_gl.txt', 'r') as file:
+            raw_data = file.readlines()[60:]
+            
+            for row in raw_data:
+                data = row.split()
+                year = data[0]
+                month = data[1]
+                day = data[2]
+                ppm = data[4] if float(data[4]) != -999.99 else ''
 
-    """
-    Pull the most recent version of MLO data and 
-     save it to XXX
-    """
-
-    pass
+                date = '-'.join([year, month, day])
+                
+                csvwriter.writerow([date, ppm])
