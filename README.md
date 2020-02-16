@@ -7,8 +7,8 @@ The data in this notebook is a combination of data collected at the Mauna Loa Ob
 - Datasets: 
     - Kaggle: https://www.kaggle.com/ucsandiego/carbon-dioxide
     - MLO: [https://www.esrl.noaa.gov/gmd/ccgg/trends/data.html](https://www.esrl.noaa.gov/gmd/ccgg/trends/data.html)
-- Online Notebook: [Jupyter nbviewer](https://nbviewer.jupyter.org/github/circulEarth/acda/blob/master/Atmospheric%20Carbon%20Dioxide%20Analysis.ipynb)
-- Source: https://github.com/circulEarth/acda
+- Online Notebook: [Jupyter nbviewer](https://nbviewer.jupyter.org/github/circulEarth/Atmospheric_CO2_Analysis/blob/master/Atmospheric%20Carbon%20Dioxide%20Analysis.ipynb)
+- Source: https://github.com/circulEarth/Atmospheric_CO2_Analysis
 - Author: https://github.com/kylepollina
 
 -------
